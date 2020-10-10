@@ -498,6 +498,10 @@ MonoBehaviour:
   - {fileID: 1996385394}
   - {fileID: 376636276}
   offset: {x: 0, y: 5, z: -20}
+  smoothTime: 0.5
+  minZoom: 40
+  maxZoom: 10
+  zoomLimiter: 50
 --- !u!1001 &1168887861
 PrefabInstance:
   m_ObjectHideFlags: 0
