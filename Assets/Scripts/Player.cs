@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -16,11 +16,15 @@ public class Player : MonoBehaviour
     private bool slideEnabled = true;
     public float attackDuration = 0.2f;
     private float attackLag = 0f;
+
+    [SerializeField]
     private int health = 10;
+
     private bool isMovable = true;
     public GameObject penguim;
     private Animator anim;
     private bool isDashing = false;
+    private bool isDead = false;
     private float dashTime = -1;
     private float dashDuration = 0.3f;
 
@@ -49,7 +53,7 @@ public class Player : MonoBehaviour
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
-        if (direction.magnitude > 0.1f && isMovable)
+        if (direction.magnitude > 0.1f && isMovable && !isDead)
         {
             anim.SetBool("running", true);
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
@@ -76,7 +80,6 @@ public class Player : MonoBehaviour
         {
             controller.Move(transform.TransformDirection(Vector3.forward) * speed * 3 * Time.deltaTime);
             dashTime -= Time.deltaTime;
-            Debug.Log(dashTime);
         }
         else
         {
@@ -94,12 +97,10 @@ public class Player : MonoBehaviour
             else
             {
                 isMovable = true;
-                dashHitbox.SetActive(false);
+                dashHitbox.SetActive(false);    
                 anim.SetBool("dashing", false);
             }
             
-
-
         }
         
     }
@@ -126,6 +127,12 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             LoseHealth(1);
+            if (health <= 0)
+            {
+                anim.SetTrigger("death");
+                isDead = true;
+                speed = 0;
+            }
         }
         
     }
@@ -137,9 +144,7 @@ public class Player : MonoBehaviour
         anim.SetTrigger("attack");
         speed /= 3;
         hitbox.SetActive(true);
-
         yield return new WaitForSeconds(attackDuration);
-
         hitbox.SetActive(false);
         //isMovable = true;
         speed *= 3;
