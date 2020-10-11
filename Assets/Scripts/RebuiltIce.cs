@@ -7,7 +7,7 @@ public class RebuiltIce : MonoBehaviour
 {
 
     public GameObject gameObject;
-    public Button rebuiltBtn;
+    //public Button rebuiltBtn;
 
     public float timer = 0f;
     public float limitTimer = 5f;
@@ -20,7 +20,7 @@ public class RebuiltIce : MonoBehaviour
     }
     void Start()
     {
-        rebuiltBtn.onClick.AddListener(rebuiltPlatform);
+        //rebuiltBtn.onClick.AddListener(rebuiltPlatform);
         goingUp = false;
     }
 

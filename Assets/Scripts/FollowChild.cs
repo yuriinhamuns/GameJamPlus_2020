@@ -8,7 +8,6 @@ public class FollowChild : MonoBehaviour
     [SerializeField]
     private Transform follow = null;
 
-
     private Vector3 originalLocalPosition;
     private Quaternion originalLocalRotation;
 
@@ -16,10 +15,12 @@ public class FollowChild : MonoBehaviour
     {
         originalLocalPosition = follow.localPosition;
         originalLocalRotation = follow.localRotation;
+
     }
 
     private void Update()
     {
+
         transform.position = follow.position;
 
         //HAS TO BE IN THIS ORDER

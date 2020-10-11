@@ -53,30 +53,18 @@ public class SwitchPlayer : MonoBehaviour
         }
     }
 
-    /*public GameObject whichPlayeIsOn()
+    public GameObject whichPlayeIsOn()
     {
         switch (onPlayer)
         {
             case 1:
-                onPlayer = 2;
-                p1 = player1.transform.position;
-                player2.transform.position = new Vector3(p1.x, p1.y, p1.z);
-
-                player1.gameObject.SetActive(false);
-                player2.gameObject.SetActive(true);
-                break;
+                return player1;
 
             case 2:
-                onPlayer = 1;
-                p2 = player2.transform.position;
-                player1.transform.position = new Vector3(p2.x, p2.y, p2.z);
-
-                player1.gameObject.SetActive(true);
-                player2.gameObject.SetActive(false);
-                break;
+                return player2;
         }
 
-        return 
-    }*/
+        return player1;
+    }
 
 }
