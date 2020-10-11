@@ -135,6 +135,11 @@ public class Player : MonoBehaviour
         speed *= 3;
     }
 
+    private void LoseHealth(int amount)
+    {
+        health -= amount;
+    }
+
 
 }
 
