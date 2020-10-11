@@ -41,4 +41,14 @@ public class Movement : MonoBehaviour
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
     }
+
+    void OnMove()
+    {
+
+    }
+
+    void OnJump()
+    {
+
+    }
 }
