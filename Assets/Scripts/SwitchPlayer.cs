@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class SwitchPlayer : MonoBehaviour
 {
     public GameObject player1, player2;
     private int whichPlayerIsOn = 1;
+    bool isPressed = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,9 +17,10 @@ public class SwitchPlayer : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown("z"))
+        if (isPressed)
         {
             SwitchPlayers();
+            isPressed = false;
         }
     }
 
@@ -39,5 +42,11 @@ public class SwitchPlayer : MonoBehaviour
                 player2.gameObject.SetActive(false);
                 break;
         }
+    }
+
+    void OnSwitchAvatar()
+    {
+        Debug.Log("SWITCH");
+        isPressed = true;
     }
 }
