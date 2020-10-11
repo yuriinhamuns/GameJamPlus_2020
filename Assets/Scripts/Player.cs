@@ -17,10 +17,10 @@ public class Player : MonoBehaviour
     public float attackDuration = 0.2f;
     private float attackLag = 0f;
 
-    public int attackDamage = 1;
+    public int attackDamage = 25;
 
     [SerializeField]
-    private int health = 10;
+    private int health = 100;
 
     private bool isMovable = true;
     public GameObject penguim;
