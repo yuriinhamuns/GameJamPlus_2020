@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class meltingIce : MonoBehaviour
 {
-    public float timer;
-    public float limitTimer;
+    public float timer = 0f;
+    public float limitTimer = 5f;
 
     public GameObject gameObject;
     public Vector3 sink;
