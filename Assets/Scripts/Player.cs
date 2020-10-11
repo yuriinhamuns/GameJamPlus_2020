@@ -129,7 +129,11 @@ public class Player : MonoBehaviour
         anim.SetTrigger("attack");
         speed /= 3;
         hitbox.SetActive(true);
+
+        FindObjectOfType<AudioManager>().Play("Penguin Slap Miss");
+
         yield return new WaitForSeconds(attackDuration);
+
         hitbox.SetActive(false);
         //isMovable = true;
         speed *= 3;
