@@ -8,33 +8,53 @@ public class Bear : MonoBehaviour
     private float turnMoveTime = .1f;
     private float turnMoveVelocity;
     public float attackDuration = 0;
-    public bool hasSnowBall;
     private CharacterController controller;
+
+    public bool hasSnowBall;
+    public bool canPickUpSnowBall;
+    public float snowBallCoolDownDuration;
+    public float throwForce;
+    public GameObject snowBall;
+    public Rigidbody throwableSnowBall;
+    public Transform snowBallSpawn;
+
     public GameObject hitbox;
     public int health;
+    public bool dead;
 
     public GameObject bear;
     private Animator anim;
 
+    private AudioSource[] sounds;
 
     // Start is called before the first frame update
     void Start()
     {
+        canPickUpSnowBall = true;
+        dead = false;
         hasSnowBall = false;
         controller = GetComponent<CharacterController>();
         anim = bear.gameObject.GetComponent<Animator>();
+
+        sounds = GetComponents<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Move();
-        if(!hasSnowBall){
-            PickUpSnow();
+        if(!dead)
+        {
+            Move();
+            if(!hasSnowBall && canPickUpSnowBall){
+                PickUpSnow();
+            }
+            else if(hasSnowBall)
+            {
+                PlaceSnow();
+            }
+            Attack();
         }
-        else{
-            PlaceSnow();
-        }
+
     }
 
     private void Move()
@@ -60,25 +80,59 @@ public class Bear : MonoBehaviour
     private void PickUpSnow()
     {
         //inserir bottão de ataque
-        if (Input.GetKeyDown(KeyCode.Space) && !hasSnowBall)
+        if (Input.GetKeyDown(KeyCode.Z) && !hasSnowBall)
         {
+            sounds[2].Play();
+
+            StartCoroutine(SnowBallCoolDown(snowBallCoolDownDuration));
             //anim.SetBool("bearHasSnowBall", true);
             Debug.Log("snow ball " + hasSnowBall.ToString());
             hasSnowBall = true;
+            snowBall.SetActive(true);
+            anim.SetBool("bearHasSnowBall", true);
+
             //StartCoroutine(ShowHitboxForSeconds(attackDuration));            
         }
     }
 
+    IEnumerator SnowBallCoolDown(float time)
+    {
+        canPickUpSnowBall = false;
+        yield return new WaitForSeconds(time);
+        canPickUpSnowBall = true;
+    }
+
     private void PlaceSnow()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && hasSnowBall)
+        if (Input.GetKeyDown(KeyCode.Z) && hasSnowBall)
         {
-            //anim.SetBool("bearHasSnowBall", false);
+            
+            //Setar animator throwing
             hasSnowBall = false;
+            snowBall.SetActive(false);
+
+            Rigidbody throwableSnowBallInstance;
+            throwableSnowBallInstance = Instantiate(throwableSnowBall, snowBallSpawn.position, snowBallSpawn.rotation) as Rigidbody;
+            throwableSnowBallInstance.AddForce(snowBallSpawn.up * throwForce);
+
+            anim.SetBool("bearHasSnowBall", false);
+            anim.SetTrigger("bearThrow");
+            //StartCoroutine(ShowHitboxForSeconds(attackDuration));            
+        }
+    }
+
+    private void Attack()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && !hasSnowBall)
+        {
+            //Setar animator attack 
+            sounds[0].Play();
+            anim.SetTrigger("bearAttack");      
             StartCoroutine(ShowHitboxForSeconds(attackDuration));            
         }
     }
 
+    /*
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log("Collision entered");
@@ -88,7 +142,17 @@ public class Bear : MonoBehaviour
         }
         
     }
+    */
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Enemy")
+        {
+            sounds[1].Play();
+            LoseHealth(1);
+        }
+    }
     
+
     IEnumerator ShowHitboxForSeconds(float time)
     {
         hitbox.SetActive(true);
@@ -99,6 +163,16 @@ public class Bear : MonoBehaviour
     private void LoseHealth(int amount)
     {
         health -= amount;
+        if (health <= 0)
+        {
+            Death();
+        }
+    }
+
+    private void Death()
+    {
+        dead = true;
+        anim.SetTrigger("bearDeath");
     }
 
 

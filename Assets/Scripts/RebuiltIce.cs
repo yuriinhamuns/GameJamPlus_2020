@@ -13,6 +13,11 @@ public class RebuiltIce : MonoBehaviour
     public float limitTimer = 5f;
     public Vector3 upp;
     public bool goingUp;
+
+    private void Awake()
+    {
+        goingUp = false;
+    }
     void Start()
     {
         rebuiltBtn.onClick.AddListener(rebuiltPlatform);

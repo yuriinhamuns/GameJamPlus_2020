@@ -38690,6 +38690,7 @@ GameObject:
   - component: {fileID: 5154624129114626817}
   - component: {fileID: 5903984259359412913}
   - component: {fileID: 3108350173847663835}
+  - component: {fileID: 5221582520561153871}
   m_Layer: 9
   m_Name: FireSeek
   m_TagString: Untagged
@@ -38768,3 +38769,16 @@ MonoBehaviour:
   projectileNumber: 0
   projectileLifetime: 0
   speedProjectiles: 0
+--- !u!114 &5221582520561153871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614484610296924591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8081bb5d258b124b8585cbc48f9c1d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
