@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+
     public float speed = 10f;
     private float turnMoveTime = .1f;
     private float turnMoveVelocity;
