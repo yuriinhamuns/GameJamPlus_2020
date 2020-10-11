@@ -303,11 +303,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1edb4e564525e73498500685b4dc9afe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  attackDuration: 0
+  speed: 6
+  attackDuration: 0.6
+  hasSnowBall: 0
   hitbox: {fileID: 0}
-  health: 0
---- !u!143 &4734880855542711567
+  health: 50
+  bear: {fileID: 0}
+--- !u!143 &6120233137950491334
 CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
