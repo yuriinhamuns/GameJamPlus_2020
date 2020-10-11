@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.InputSystem.InputAction;
 
 public class Player : MonoBehaviour
 {
@@ -23,11 +24,14 @@ public class Player : MonoBehaviour
     private float dashTime = -1;
     private float dashDuration = 0.3f;
 
+    private AudioManager audio;
+
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
         anim = penguim.gameObject.GetComponent<Animator>();
+        audio = GetComponent<AudioManager>();
     }
 
     // Update is called once per frame
@@ -60,6 +64,7 @@ public class Player : MonoBehaviour
         //inserir bottão de ataque
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            audio.Play(1);
             StartCoroutine(ShowHitboxForSeconds());
         }
     }
@@ -76,6 +81,8 @@ public class Player : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Z) && slideEnabled)
             {
+                audio.Play(0);
+
                 isMovable = false;
                 anim.SetBool("dashing", true);
                 dashHitbox.SetActive(true);
@@ -130,8 +137,6 @@ public class Player : MonoBehaviour
         speed /= 3;
         hitbox.SetActive(true);
 
-        FindObjectOfType<AudioManager>().Play("Penguin Slap Miss");
-
         yield return new WaitForSeconds(attackDuration);
 
         hitbox.SetActive(false);
@@ -143,7 +148,6 @@ public class Player : MonoBehaviour
     {
         health -= amount;
     }
-
 
 }
 
