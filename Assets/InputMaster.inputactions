@@ -530,6 +530,50 @@
                     "action": "SwicthAvatar",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fabb62eb-0f90-4c66-97f4-9908d9a2d238",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwicthAvatar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2a4ebb4c-a2a1-4a3a-b72f-c8ea9c04d8e1",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwicthAvatar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2f04448a-8df3-4b47-a52b-f03f5d68438a",
+                    "path": "<HID::MY-POWER CO.,LTD. 2In1 USB Joystick>/button5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwicthAvatar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "40b2a070-172c-4686-a8bf-b4daff77a340",
+                    "path": "<HID::MY-POWER CO.,LTD. 2In1 USB Joystick>/button6",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwicthAvatar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
