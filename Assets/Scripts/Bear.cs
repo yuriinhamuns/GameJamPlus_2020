@@ -25,6 +25,7 @@ public class Bear : MonoBehaviour
     public GameObject bear;
     private Animator anim;
 
+    private AudioSource[] sounds;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +35,8 @@ public class Bear : MonoBehaviour
         hasSnowBall = false;
         controller = GetComponent<CharacterController>();
         anim = bear.gameObject.GetComponent<Animator>();
+
+        sounds = GetComponents<AudioSource>();
     }
 
     // Update is called once per frame
@@ -79,7 +82,8 @@ public class Bear : MonoBehaviour
         //inserir bottão de ataque
         if (Input.GetKeyDown(KeyCode.Z) && !hasSnowBall)
         {
-            
+            sounds[2].Play();
+
             StartCoroutine(SnowBallCoolDown(snowBallCoolDownDuration));
             //anim.SetBool("bearHasSnowBall", true);
             Debug.Log("snow ball " + hasSnowBall.ToString());
@@ -120,8 +124,9 @@ public class Bear : MonoBehaviour
     private void Attack()
     {
         if (Input.GetKeyDown(KeyCode.Space) && !hasSnowBall)
-        {   
+        {
             //Setar animator attack 
+            sounds[0].Play();
             anim.SetTrigger("bearAttack");      
             StartCoroutine(ShowHitboxForSeconds(attackDuration));            
         }
@@ -142,6 +147,7 @@ public class Bear : MonoBehaviour
     {
         if(other.gameObject.tag == "Enemy")
         {
+            sounds[1].Play();
             LoseHealth(1);
         }
     }
