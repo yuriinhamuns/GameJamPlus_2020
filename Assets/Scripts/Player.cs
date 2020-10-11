@@ -24,14 +24,15 @@ public class Player : MonoBehaviour
     private float dashTime = -1;
     private float dashDuration = 0.3f;
 
-    private AudioManager audio;
+    private AudioSource[] sounds;
 
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
         anim = penguim.gameObject.GetComponent<Animator>();
-        audio = GetComponent<AudioManager>();
+
+        sounds = GetComponents<AudioSource>();
     }
 
     // Update is called once per frame
@@ -64,7 +65,7 @@ public class Player : MonoBehaviour
         //inserir bottão de ataque
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            audio.Play(1);
+            sounds[0].Play();
             StartCoroutine(ShowHitboxForSeconds());
         }
     }
@@ -81,7 +82,7 @@ public class Player : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Z) && slideEnabled)
             {
-                audio.Play(0);
+                sounds[1].Play();
 
                 isMovable = false;
                 anim.SetBool("dashing", true);
@@ -121,7 +122,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collision entered");
+        //Debug.Log("Collision entered");
         if (collision.gameObject.tag == "Enemy")
         {
             LoseHealth(1);
