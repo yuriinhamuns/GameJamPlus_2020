@@ -17,6 +17,8 @@ public class Player : MonoBehaviour
     public float attackDuration = 0.2f;
     private float attackLag = 0f;
 
+    public int attackDamage = 1;
+
     [SerializeField]
     private int health = 10;
 
@@ -69,7 +71,7 @@ public class Player : MonoBehaviour
         //inserir bottão de ataque
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            sounds[0].Play();
+            sounds[1].Play();
             StartCoroutine(ShowHitboxForSeconds());
         }
     }
@@ -85,7 +87,7 @@ public class Player : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Z) && slideEnabled)
             {
-                sounds[1].Play();
+                sounds[0].Play();
 
                 isMovable = false;
                 anim.SetBool("dashing", true);
@@ -126,7 +128,7 @@ public class Player : MonoBehaviour
         //Debug.Log("Collision entered");
         if (collision.gameObject.tag == "Enemy")
         {
-            LoseHealth(1);
+            LoseHealth(attackDamage);
             if (health <= 0)
             {
                 anim.SetTrigger("death");

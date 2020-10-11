@@ -97,10 +97,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targets:
-  - {fileID: 3612226260822990549, guid: ea50144fe6b56c54ebfe999c63d2e941, type: 3}
-  - {fileID: 6120233137950491354, guid: 09ccd4500ca9f6c479a048788cae7eea, type: 3}
+  - {fileID: 0}
   offset: {x: 0, y: 50, z: -35}
   smoothTime: 0.3
-  minZoom: 35
-  maxZoom: 15
-  zoomLimiter: 40
+  minZoom: 50
+  maxZoom: 20
+  zoomLimiter: 50

@@ -14,7 +14,7 @@ public class EnemyStatus : MonoBehaviour
     }
     private void Update()
     {
-        if(health < 1)
+        if(health <= 0)
         {
             Destroy(gameObject);
         }
@@ -25,7 +25,7 @@ public class EnemyStatus : MonoBehaviour
         if (collision.gameObject.tag == "Player Attack")
         {
             sounds[0].Play();
-            LoseHealth(1);
+            LoseHealth(10);
         }
 
     }
