@@ -22,12 +22,12 @@ public class EnemyStatus : MonoBehaviour
         }
     }
 
-    private void OnCollisionStay(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
         Debug.Log("collision");
         if (collision.gameObject.tag == "Hitbox")
         {
-            sounds[0].Play();
+            //sounds[0].Play();
             LoseHealth(10);
         }
 

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class RebuiltIce : MonoBehaviour
 {
 
-    public GameObject gameObject;
+    //public GameObject gameObject;
     //public Button rebuiltBtn;
 
     public float timer = 0f;
@@ -32,11 +32,11 @@ public class RebuiltIce : MonoBehaviour
             if(timer >= limitTimer)
             {
                 timer = 0f;
-                gameObject.transform.position += upp;
+                /*gameObject.transform.position += upp;
                 if(gameObject.transform.position.y >= 0)
                 {
                     goingUp = false;
-                }
+                }*/
             }
         }
     }
@@ -44,7 +44,7 @@ public class RebuiltIce : MonoBehaviour
     void rebuiltPlatform()
     {
         //gameObject.transform.position = new Vector3Int(1,1,1);
-        gameObject.SetActive(true);
+        //gameObject.SetActive(true);
         goingUp = true;
     }
 

@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 7702754612074080001}
   - component: {fileID: 6296636374914161446}
   - component: {fileID: 6296636374914161448}
+  - component: {fileID: 3856370136940050079}
   m_Layer: 9
   m_Name: FireRandom
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83,17 +84,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b32acbaa039a1f42adb8adb6ca70c70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyDrop: {fileID: 4628687556223687707, guid: fd776bec3ec2f8d4faff9f1d0d68e0a6, type: 3}
-  timeToDrop: 3
-  normal: 0
-  bomb: 1
-  seekNearestPlayer: 0
+  enemyDrop: {fileID: 703668242940370505, guid: 982e1fdbdd017454eb236826c91ed287, type: 3}
+  timeToDrop: 5
+  normal: 1
+  bomb: 0
+  seekNearestPlayer: 1
   speed: 2
   timeToDestroy: 1
   applyGravity: 0
-  projectileNumber: 8
+  projectileNumber: 4
   projectileLifetime: 10
-  speedProjectiles: 6
+  speedProjectiles: 5
+--- !u!114 &3856370136940050079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8763532587549057497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8081bb5d258b124b8585cbc48f9c1d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
 --- !u!1 &8870815587725546709
 GameObject:
   m_ObjectHideFlags: 0

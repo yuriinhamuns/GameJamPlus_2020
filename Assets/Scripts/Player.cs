@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     public float attackDuration = 0.3f;
     private float attackLag = 0f;
 
+    [SerializeField]
     public int attackDamage = 25;
 
     [SerializeField]
@@ -26,12 +27,14 @@ public class Player : MonoBehaviour
     public GameObject penguim;
     private Animator anim;
     private bool isDashing = false;
-    private bool isDead = false;
+    public bool isDead = false;
     private float dashTime = -1;
     private float dashDuration = 0.3f;
     private bool immortal = false;
 
     private AudioSource[] sounds;
+
+    public LifeSlider slider;
 
     // Start is called before the first frame update
     void Start()
@@ -133,6 +136,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "Enemy" && !immortal)
         {
             LoseHealth(attackDamage);
+            slider.SetHealth(health);
             if (health <= 0)
             {
                 anim.SetTrigger("death");
@@ -140,7 +144,18 @@ public class Player : MonoBehaviour
                 speed = 0;
             }
         }
-        
+        else if (collision.gameObject.tag == "Water")
+        {
+            LoseHealth(100);
+            slider.SetHealth(health);
+            if (health <= 0)
+            {
+                anim.SetTrigger("death");
+                isDead = true;
+                speed = 0;
+            }
+        }
+
     }
     
     IEnumerator ShowHitboxForSeconds()

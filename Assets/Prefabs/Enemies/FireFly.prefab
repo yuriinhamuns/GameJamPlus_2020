@@ -38691,9 +38691,10 @@ GameObject:
   - component: {fileID: 6073045949364085656}
   - component: {fileID: 621519404132863507}
   - component: {fileID: 4973370931762565363}
+  - component: {fileID: 8426213838367700214}
   m_Layer: 9
   m_Name: FireFly
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38793,3 +38794,16 @@ MonoBehaviour:
   projectileNumber: 6
   projectileLifetime: 5
   speedProjectiles: 7
+--- !u!114 &8426213838367700214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3642590765707859076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8081bb5d258b124b8585cbc48f9c1d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10

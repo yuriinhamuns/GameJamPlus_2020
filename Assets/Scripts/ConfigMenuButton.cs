@@ -8,8 +8,9 @@ public class ConfigMenuButton : MonoBehaviour
 {
     public Sprite onButton;
     public Sprite offButton;
-    // public AudioMixer audio;
+    public AudioMixer audio;
     private bool state;
+
     public Image imageButton;
     // Start is called before the first frame update
     void Start()
@@ -39,9 +40,11 @@ public class ConfigMenuButton : MonoBehaviour
         if(state)
         {
             imageButton.sprite = onButton;
+            audio.SetFloat("VolumeMaster", 0);
         }else
         {
             imageButton.sprite = offButton;
+            audio.SetFloat("VolumeMaster", -80);
         }
     }
 }

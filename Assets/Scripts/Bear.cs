@@ -19,13 +19,15 @@ public class Bear : MonoBehaviour
     public Transform snowBallSpawn;
 
     public GameObject hitbox;
-    public int health;
+    public int health = 100;
     public bool dead;
 
     public GameObject bear;
     private Animator anim;
 
     private AudioSource[] sounds;
+
+    public LifeSlider slider;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +44,7 @@ public class Bear : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //transform.position = new Vector3(transform.position.x, -1.32f, transform.position.z);
         if(!dead)
         {
             Move();
@@ -82,7 +85,7 @@ public class Bear : MonoBehaviour
         //inserir bottão de ataque
         if (Input.GetKeyDown(KeyCode.Z) && !hasSnowBall)
         {
-            sounds[2].Play();
+            sounds[0].Play();
 
             StartCoroutine(SnowBallCoolDown(snowBallCoolDownDuration));
             //anim.SetBool("bearHasSnowBall", true);
@@ -126,23 +129,27 @@ public class Bear : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && !hasSnowBall)
         {
             //Setar animator attack 
-            sounds[0].Play();
+            sounds[1].Play();
             anim.SetTrigger("bearAttack");      
             StartCoroutine(ShowHitboxForSeconds(attackDuration));            
         }
     }
 
-    /*
+    
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collision entered");
+        //Debug.Log("Collision entered");
         if (collision.gameObject.tag == "Enemy")
         {
-            LoseHealth(1);
+            LoseHealth(25);
+        }
+        else if (collision.gameObject.tag == "Water")
+        {
+            LoseHealth(100);
         }
         
     }
-    */
+    
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Enemy")
@@ -163,6 +170,7 @@ public class Bear : MonoBehaviour
     private void LoseHealth(int amount)
     {
         health -= amount;
+        slider.SetHealth(health);
         if (health <= 0)
         {
             Death();
