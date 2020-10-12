@@ -10,6 +10,10 @@ public class Bear : MonoBehaviour
     public float attackDuration = 0;
     private CharacterController controller;
 
+    //Teste gravidade
+    public float gravityValue = -9.81f;
+    private Vector3 playerVelocity;
+
     public bool hasSnowBall;
     public bool canPickUpSnowBall;
     public float snowBallCoolDownDuration;
@@ -27,7 +31,7 @@ public class Bear : MonoBehaviour
 
     private AudioSource[] sounds;
 
-    public LifeSlider slider;
+    //public LifeSlider slider;
 
     // Start is called before the first frame update
     void Start()
@@ -79,6 +83,11 @@ public class Bear : MonoBehaviour
         {
             anim.SetBool("bearRunning", false);
         }
+
+        //Teste Gravidade
+        //Debug.Log(playerVelocity);
+        playerVelocity.y = gravityValue;
+        controller.Move(playerVelocity * Time.deltaTime);
     }
     private void PickUpSnow()
     {
@@ -89,7 +98,7 @@ public class Bear : MonoBehaviour
 
             StartCoroutine(SnowBallCoolDown(snowBallCoolDownDuration));
             //anim.SetBool("bearHasSnowBall", true);
-            Debug.Log("snow ball " + hasSnowBall.ToString());
+            //Debug.Log("snow ball " + hasSnowBall.ToString());
             hasSnowBall = true;
             snowBall.SetActive(true);
             anim.SetBool("bearHasSnowBall", true);
@@ -170,7 +179,7 @@ public class Bear : MonoBehaviour
     private void LoseHealth(int amount)
     {
         health -= amount;
-        slider.SetHealth(health);
+        //slider.SetHealth(health);
         if (health <= 0)
         {
             Death();

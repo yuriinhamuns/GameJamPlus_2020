@@ -7,13 +7,12 @@ public class StartPoint: MonoBehaviour
     public GameObject player;
     void Start()
     {
-        player = GetComponent<GameObject>();
-        Instantiate(player, new Vector3(this.transform.position.x, this.transform.position.z, this.transform.position.y), Quaternion.identity);
+        Instantiate(player, startPoint);
     }
 
 
-    public void Reset()
+    /*public void Reset()
     {
         player.transform.position = startPoint.position;
-    }
+    }*/
 }

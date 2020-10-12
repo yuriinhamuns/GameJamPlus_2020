@@ -8,12 +8,14 @@ public class CheckGround : MonoBehaviour
     private Vector3 diference;
     private Vector3 newDiference;
 
+    public float checkDistance = 10f;
+
     // Start is called before the first frame update
     void Start()
     {
         RaycastHit groundCheck;
 
-        if (Physics.Raycast(transform.position, Vector3.down, out groundCheck, 2f))
+        if (Physics.Raycast(transform.position, Vector3.down, out groundCheck, checkDistance))
         {
             if (groundCheck.transform.gameObject.tag == "Ground")
             {
@@ -38,7 +40,7 @@ public class CheckGround : MonoBehaviour
     {
         RaycastHit groundCheck;
 
-        if (Physics.Raycast(transform.position, Vector3.down, out groundCheck, 2f))
+        if (Physics.Raycast(transform.position, Vector3.down, out groundCheck, checkDistance))
         {
             if (groundCheck.transform.gameObject.tag == "Ground")
             {

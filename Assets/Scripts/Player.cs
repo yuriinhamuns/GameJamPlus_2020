@@ -6,6 +6,9 @@ using static UnityEngine.InputSystem.InputAction;
 
 public class Player : MonoBehaviour
 {
+    //Teste gravidade
+    public float gravityValue = -9.81f;
+    private Vector3 playerVelocity;
 
     public float speed = 10f;
     private float turnMoveTime = .1f;
@@ -69,6 +72,12 @@ public class Player : MonoBehaviour
         }
         else
             anim.SetBool("running", false);
+
+
+        //Teste Gravidade
+        //Debug.Log(playerVelocity);
+        playerVelocity.y = gravityValue;
+        controller.Move(playerVelocity * Time.deltaTime);
     }
     private void Attack()
     {

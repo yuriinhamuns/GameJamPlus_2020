@@ -18,7 +18,7 @@ public class meltingIce : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(rebuilt.goingUp);
+        //Debug.Log(rebuilt.goingUp);
         if(!rebuilt.goingUp)
         {
             timer += Time.deltaTime;
