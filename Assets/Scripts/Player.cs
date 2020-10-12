@@ -14,13 +14,13 @@ public class Player : MonoBehaviour
     public GameObject hitbox;
     public GameObject dashHitbox;
     private bool slideEnabled = true;
-    public float attackDuration = 0.2f;
+    public float attackDuration = 0.3f;
     private float attackLag = 0f;
 
-    public int attackDamage = 1;
+    public int attackDamage = 25;
 
     [SerializeField]
-    private int health = 10;
+    private int health = 100;
 
     private bool isMovable = true;
     public GameObject penguim;
@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
     private bool isDead = false;
     private float dashTime = -1;
     private float dashDuration = 0.3f;
+    private bool immortal = false;
 
     private AudioSource[] sounds;
 
@@ -71,7 +72,7 @@ public class Player : MonoBehaviour
         //inserir bottão de ataque
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            sounds[1].Play();
+            sounds[0].Play();
             StartCoroutine(ShowHitboxForSeconds());
         }
     }
@@ -87,17 +88,20 @@ public class Player : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Z) && slideEnabled)
             {
-                sounds[0].Play();
+                sounds[1].Play();
 
                 isMovable = false;
                 anim.SetBool("dashing", true);
                 dashHitbox.SetActive(true);
                 isDashing = true;
                 dashTime = dashDuration;
+                immortal = true;
                 
             }
             else
             {
+
+                immortal = false;
                 isMovable = true;
                 dashHitbox.SetActive(false);    
                 anim.SetBool("dashing", false);
@@ -126,7 +130,7 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         //Debug.Log("Collision entered");
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Enemy" && !immortal)
         {
             LoseHealth(attackDamage);
             if (health <= 0)

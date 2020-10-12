@@ -33,7 +33,7 @@ GameObject:
   - component: {fileID: 1885847060999051799}
   m_Layer: 0
   m_Name: DashHitbox
-  m_TagString: Untagged
+  m_TagString: Hitbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,7 +47,7 @@ Transform:
   m_GameObject: {fileID: 1885847060999051797}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.3}
-  m_LocalScale: {x: 1.6873, y: 1.6873, z: 3.650795}
+  m_LocalScale: {x: 2.6676211, y: 2.6676211, z: 5.771907}
   m_Children: []
   m_Father: {fileID: 1885847061373348391}
   m_RootOrder: 2
@@ -329,7 +329,7 @@ GameObject:
   - component: {fileID: 1885847062630584579}
   m_Layer: 0
   m_Name: hitbox
-  m_TagString: Untagged
+  m_TagString: Hitbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -343,7 +343,7 @@ Transform:
   m_GameObject: {fileID: 1885847062630584576}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1.52}
-  m_LocalScale: {x: 1.7476, y: 1.9672282, z: 1.0704749}
+  m_LocalScale: {x: 1.8627667, y: 2.0968685, z: 1.9002533}
   m_Children: []
   m_Father: {fileID: 1885847061373348391}
   m_RootOrder: 1
