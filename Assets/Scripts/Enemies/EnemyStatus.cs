@@ -16,6 +16,8 @@ public class EnemyStatus : MonoBehaviour
     {
         if(health <= 0)
         {
+            var enemy = FindObjectOfType<ScoreController>();
+            enemy.scoreUp(1);
             Destroy(gameObject);
         }
     }
