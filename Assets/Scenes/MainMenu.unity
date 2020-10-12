@@ -1234,6 +1234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onButton: {fileID: 21300000, guid: bc41af9632ac41849a8ea19bc74388f5, type: 3}
   offButton: {fileID: 21300000, guid: d421ad24f6ebf5748a765cf71c08e0df, type: 3}
+  audio: {fileID: 24100000, guid: 4963eaf973369aa4ea34d2f662868f21, type: 2}
   imageButton: {fileID: 1954926900}
 --- !u!222 &424475380
 CanvasRenderer:
@@ -2545,6 +2546,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onButton: {fileID: 21300000, guid: bc41af9632ac41849a8ea19bc74388f5, type: 3}
   offButton: {fileID: 21300000, guid: d421ad24f6ebf5748a765cf71c08e0df, type: 3}
+  audio: {fileID: 24100000, guid: 5d17ebd6c2675a74d9fd3b23990ad55e, type: 2}
   imageButton: {fileID: 148291357}
 --- !u!222 &1008846273
 CanvasRenderer:
