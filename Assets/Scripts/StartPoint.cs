@@ -1,21 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
+using System.Collections;
 
 public class StartPoint: MonoBehaviour
 {
     public Transform startPoint;
     public GameObject player;
-
-    public Button resetBtn;
     void Start()
     {
-
         player = GetComponent<GameObject>();
-        Instantiate(player, startPoint);
-
-        resetBtn.onClick.AddListener(Reset);
+        Instantiate(player, new Vector3(this.transform.position.x, this.transform.position.z, this.transform.position.y), Quaternion.identity);
     }
 
 
